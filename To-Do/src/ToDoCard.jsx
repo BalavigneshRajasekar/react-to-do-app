@@ -44,9 +44,7 @@ function ToDoCard(props) {
     <div>
       <div className="mt-4 d-flex justify-content-around gap-3 flex-wrap">
         {filteredTodo.length == 0 ? (
-          <h3 className="text-success mt-3">
-            Currently No Task is assigned !!!
-          </h3>
+          <h3 className="text-success mt-3">Currently No Task is Here !!!</h3>
         ) : (
           filteredTodo.map((values, index) => (
             <div className="card" style={{ width: "20rem" }} key={index}>
@@ -58,8 +56,8 @@ function ToDoCard(props) {
                   <select
                     className={
                       values.status == "Completed"
-                        ? "bg-success text-light py-1 ms-1"
-                        : "bg-danger text-light py-1 ms-1"
+                        ? "bg-success text-light py-2 ms-1 text-center"
+                        : "bg-danger text-light py-2 ms-1 text-center"
                     }
                     onChange={(e) => handleSelect(e, index)}
                     value={values.status}
