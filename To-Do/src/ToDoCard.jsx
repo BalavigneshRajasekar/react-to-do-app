@@ -21,15 +21,11 @@ function ToDoCard(props) {
   }
 
   //This function help us to Delete the card
-  function handleDelete(index, values) {
-    let deletedData = storeData.filter((value, index1) => {
+  function handleDelete(values) {
+    let deletedData = storeData.filter((value) => {
       return values !== value;
     });
     setStoreData(deletedData);
-    console.log(deletedData);
-    console.log(filteredTodo);
-    console.log(storeData);
-    console.log(values);
   }
 
   //This function help us to retrieve the edit card's data and update that to Input fields
@@ -80,7 +76,7 @@ function ToDoCard(props) {
                   </button>
                   <button
                     className="btn btn-danger ms-2"
-                    onClick={() => handleDelete(index, values)}
+                    onClick={() => handleDelete(values)}
                   >
                     Delete
                   </button>
