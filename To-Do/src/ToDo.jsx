@@ -110,15 +110,16 @@ function ToDo() {
       </div>
 
       {/* //Here we send essential methods to get and set values for ToDOCard component */}
-
-      <ToDoCard
-        filteredTodo={filteredTodo}
-        setStoreData={setStoreData}
-        setShowBtn={setShowBtn}
-        setIndex={setIndex}
-        setFormData={setFormData}
-        setFilters={setFilters}
-      ></ToDoCard>
+      <div className="mt-3">
+        <ToDoCard
+          filteredTodo={filteredTodo}
+          setStoreData={setStoreData}
+          setShowBtn={setShowBtn}
+          setIndex={setIndex}
+          setFormData={setFormData}
+          setFilters={setFilters}
+        ></ToDoCard>
+      </div>
     </div>
   );
 }
