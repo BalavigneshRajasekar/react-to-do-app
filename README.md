@@ -11,7 +11,7 @@ With that filter option user can able to identify which are completed and not co
 
 ## Demo
 
-https://price-card-ui.vercel.app/
+https://react-to-do-app-one-alpha.vercel.app/
 
 ## Documentation
 
