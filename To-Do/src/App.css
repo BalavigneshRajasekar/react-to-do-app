@@ -13,3 +13,11 @@
 .card {
   background-color: rgb(154, 225, 154);
 }
+
+@media (max-width: 576px) {
+  .input-field {
+    margin-left: 0px;
+    width: 100%;
+    border: 1px solid green;
+  }
+}
