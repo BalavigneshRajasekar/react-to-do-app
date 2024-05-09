@@ -1,0 +1,15 @@
+.input-field {
+  width: 400px;
+  height: 40px;
+  margin-left: 50px;
+  margin-top: 30px;
+  border: 1px solid green;
+}
+.select {
+  margin-left: 10px;
+  background-color: rgb(215, 88, 88);
+  color: white;
+}
+.card {
+  background-color: rgb(154, 225, 154);
+}
