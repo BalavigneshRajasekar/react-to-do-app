@@ -1,21 +1,31 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ToDoCard from "./ToDoCard";
 
 function ToDo() {
+  //Hold The Meta DATA
   let [storeData, setStoreData] = useState([]);
+  //Hold Form Data
   let [formData, setFormData] = useState({
     task: "",
     description: "",
     status: "Not Completed",
   });
+  //Hold Data for Filter Action
   let [filter, setFilter] = useState("All");
+  // //For render purpose once changed the status
   let [filters, setFilters] = useState([]);
+  // Help to switching "Add BTN" to "Update BTN"
   let [showBtn, setShowBtn] = useState(true);
+  //Hold MetaData Index for editing
   let [index, setIndex] = useState();
 
+  //Capturing Initial Form Data
   function handleData(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
+
+  //This function is used to add all the form data In an array of objects
   function addTaskData() {
     setStoreData([...storeData, formData]);
     setFormData({
@@ -25,6 +35,7 @@ function ToDo() {
     });
   }
 
+  //This FilteredTodo is used to Show the list of tasks in ToDoCard component and Filter option
   const filteredTodo = storeData.filter((todo) => {
     if (filter == "All") {
       return true;
@@ -32,30 +43,10 @@ function ToDo() {
     return todo.status === filter;
   });
 
-  function handleSelect(e, index) {
-    filteredTodo[index].status = e.target.value;
-    setFilters(filteredTodo);
-  }
-
-  function handleDelete(index) {
-    let deletedData = filteredTodo.filter((_, index1) => {
-      return index1 !== index;
-    });
-    setStoreData(deletedData);
-  }
-
-  function handleEdit(value, index) {
-    setFormData({
-      task: value.task,
-      description: value.description,
-      status: "Not Completed",
-    });
-    setShowBtn(false);
-    setIndex(index);
-  }
-
+  //This function is used to edit the existing tasks
   function HandleUpdate() {
-    console.log(formData);
+    //This will take tha new value from the input field and replace it with the old value
+    //Index is help us to get the same card which needs to be updated
     storeData[index] = formData;
 
     setShowBtn(true);
@@ -66,7 +57,7 @@ function ToDo() {
     });
   }
   return (
-    <div className="container ">
+    <div className="">
       <div>
         <input
           type="text"
@@ -106,7 +97,7 @@ function ToDo() {
       <div className="d-flex justify-content-between mt-5">
         <h5>My ToDos</h5>
         <h5>
-          Filters:
+          Status Filter:
           <select
             className="select py-1"
             onChange={(e) => setFilter(e.target.value)}
@@ -118,47 +109,16 @@ function ToDo() {
         </h5>
       </div>
 
-      {/* TODO CARD */}
+      {/* //Here we send essential methods to get and set values for ToDOCard component */}
 
-      <div className="mt-4 d-flex justify-content-around gap-3 flex-wrap">
-        {filteredTodo.map((values, index) => (
-          <div className="card" style={{ width: "20rem" }} key={index}>
-            <div className="card-body">
-              <h6 className="card-title">Task : {values.task}</h6>
-              <p className="card-text">Description : {values.description}</p>
-              <p>
-                Status :
-                <select
-                  className={
-                    values.status == "Completed"
-                      ? "bg-success text-light py-1 ms-1"
-                      : "bg-danger text-light py-1 ms-1"
-                  }
-                  onChange={(e) => handleSelect(e, index)}
-                  value={values.status}
-                >
-                  <option value="Not Completed">Not Completed</option>
-                  <option value="Completed">Completed</option>
-                </select>
-              </p>
-              <div className="d-flex justify-content-end">
-                <button
-                  className="btn btn-success"
-                  onClick={() => handleEdit(values, index)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn btn-danger ms-2"
-                  onClick={() => handleDelete(index)}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <ToDoCard
+        filteredTodo={filteredTodo}
+        setStoreData={setStoreData}
+        setShowBtn={setShowBtn}
+        setIndex={setIndex}
+        setFormData={setFormData}
+        setFilters={setFilters}
+      ></ToDoCard>
     </div>
   );
 }
