@@ -45,9 +45,14 @@ function ToDo() {
 
   //This function is used to edit the existing tasks
   function HandleUpdate() {
-    //This will take tha new value from the input field and replace it with the old value
-    //Index is help us to get the same card which needs to be updated
-    storeData[index] = formData;
+    storeData.forEach((value, index1) => {
+      //Here we compare the filteredTodo value which we get in edit with the storeData value
+      if (filteredTodo[index] == value) {
+        //This will take tha new value from the input field and replace it with the old value
+        storeData[index1] = formData;
+      }
+    });
+    console.log(index);
 
     setShowBtn(true);
     setFormData({
@@ -118,6 +123,7 @@ function ToDo() {
           setIndex={setIndex}
           setFormData={setFormData}
           setFilters={setFilters}
+          storeData={storeData}
         ></ToDoCard>
       </div>
     </div>
