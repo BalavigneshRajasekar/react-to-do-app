@@ -5,8 +5,8 @@ import ToDo from "./ToDo";
 
 function App() {
   return (
-    <div className="App">
-      <div>
+    <div className="container">
+      <div className="mt-5">
         <h4 className="text-center text-success">My ToDo</h4>
         <ToDo></ToDo>
       </div>
