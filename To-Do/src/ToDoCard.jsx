@@ -10,6 +10,7 @@ function ToDoCard(props) {
     setIndex,
     setFormData,
     setFilters,
+    storeData,
   } = props;
 
   //This function help us to Change status in the card
@@ -20,11 +21,15 @@ function ToDoCard(props) {
   }
 
   //This function help us to Delete the card
-  function handleDelete(index) {
-    let deletedData = filteredTodo.filter((_, index1) => {
-      return index1 !== index;
+  function handleDelete(index, values) {
+    let deletedData = storeData.filter((value, index1) => {
+      return values !== value;
     });
     setStoreData(deletedData);
+    console.log(deletedData);
+    console.log(filteredTodo);
+    console.log(storeData);
+    console.log(values);
   }
 
   //This function help us to retrieve the edit card's data and update that to Input fields
@@ -75,7 +80,7 @@ function ToDoCard(props) {
                   </button>
                   <button
                     className="btn btn-danger ms-2"
-                    onClick={() => handleDelete(index)}
+                    onClick={() => handleDelete(index, values)}
                   >
                     Delete
                   </button>
