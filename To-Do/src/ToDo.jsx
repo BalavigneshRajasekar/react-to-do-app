@@ -95,8 +95,8 @@ function ToDo() {
       {/* Filter bar */}
 
       <div className="d-flex justify-content-between mt-5">
-        <h5>My ToDos</h5>
-        <h5>
+        <h5 className="fw-bold">My ToDos</h5>
+        <h5 className="fw-bold">
           Status Filter:
           <select
             className="select py-1"
